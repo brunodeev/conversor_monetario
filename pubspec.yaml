@@ -36,11 +36,17 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   flutter_masked_text: ^0.8.0
-  currency_text_input_formatter: ^2.1.7
+  flutter_launcher_icons: ^0.10.0
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/app/icon.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

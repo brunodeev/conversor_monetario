@@ -1,8 +1,6 @@
 // ignore_for_file: must_be_immutable, camel_case_types
 
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../constants.dart';
 
@@ -10,12 +8,6 @@ Widget buildTextField(String klabel, String khint,
     TextEditingController control, void Function(String)? func) {
   return TextField(
     controller: control,
-    inputFormatters: <TextInputFormatter>[
-      CurrencyTextInputFormatter(
-        decimalDigits: 2,
-        symbol: '',
-      ),
-    ],
     keyboardType: TextInputType.number,
     style: const TextStyle(color: Colors.white),
     decoration: InputDecoration(

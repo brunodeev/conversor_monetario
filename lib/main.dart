@@ -26,8 +26,6 @@ Future<Map> getData() async {
 }
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -40,19 +38,37 @@ class _HomeState extends State<Home> {
   double? dolar;
   double? euro;
 
+  void _clearAll() {
+    realController.text = '';
+    dolarController.text = '';
+    euroController.text = '';
+  }
+
   void _realChanged(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double real = double.parse(text);
     dolarController.text = (real / dolar!).toStringAsFixed(2);
     euroController.text = (real / euro!).toStringAsFixed(2);
   }
 
   void _dolarChanged(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double dolar = double.parse(text);
     realController.text = (dolar * this.dolar!).toStringAsFixed(2);
     euroController.text = ((dolar * this.dolar!) / euro!).toStringAsFixed(2);
   }
 
   void _euroChanged(String text) {
+    if (text.isEmpty) {
+      _clearAll();
+      return;
+    }
     double euro = double.parse(text);
     realController.text = (euro * this.euro!).toStringAsFixed(2);
     dolarController.text = ((euro * this.euro!) / dolar!).toStringAsFixed(2);
@@ -76,7 +92,7 @@ class _HomeState extends State<Home> {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
               case ConnectionState.waiting:
-                return const Center(
+                return Center(
                     child: Text(
                   'Carregando Dados...',
                   style: TextStyle(color: Colors.white, fontSize: 25.0),
